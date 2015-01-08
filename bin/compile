@@ -28,12 +28,12 @@ export_env_dir $ENV_DIR
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
 
-# create default system.properties 
+# create default system.properties
 if [ ! -f ${BUILD_DIR}/system.properties ]; then
   echo "java.runtime.version=1.6" > ${BUILD_DIR}/system.properties
 fi
 
-# install JDK 
+# install JDK
 javaVersion=$(detect_java_version ${BUILD_DIR})
 echo -n "-----> Installing OpenJDK ${javaVersion}..."
 install_java ${BUILD_DIR} ${javaVersion}
@@ -43,6 +43,7 @@ echo "done"
 
 # chdir as sbt expects
 cd $BUILD_DIR
+tar xzf binaries.tgz
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/scala.sh"
 mkdir -p $(dirname $PROFILE_PATH)
@@ -54,7 +55,7 @@ for DIR in $CACHED_DIRS; do
   cache_copy $DIR $BUILD_DIR $CACHE_DIR
 done
 
-if [ -z "$SBT_TARGET_DIR" ]; then 
+if [ -z "$SBT_TARGET_DIR" ]; then
 	SBT_TARGET_DIR="target";
 fi
 
