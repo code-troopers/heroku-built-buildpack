@@ -73,6 +73,10 @@ if [ -d $BUILD_DIR/.jdk/lib/visualvm ] ; then
   echo "-----> Dropping visualvm from the slug"
   rm -rf $BUILD_DIR/.jdk/lib/visualvm
 fi
+if [ -f $BUILD_DIR/binaries.tgz ] ; then
+    echo "-----> Dropping binaries.tgz from the slug"
+    rm -rf $BUILD_DIR/binaries.tgz
+fi
 
 # Move compiled app back to where Heroku expects it
 mv $BUILD_DIR $APP_BUILD_DIR
