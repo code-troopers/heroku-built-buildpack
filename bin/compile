@@ -43,7 +43,7 @@ echo "done"
 
 # chdir as sbt expects
 cd $BUILD_DIR
-tar xzf binaries.tgz
+# tar xzf binaries.tgz
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/scala.sh"
 mkdir -p $(dirname $PROFILE_PATH)
