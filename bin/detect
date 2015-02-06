@@ -5,3 +5,5 @@ BIN_DIR=$(cd $(dirname $0); pwd)
 BUILD_DIR=$1
 
 . $BIN_DIR/common
+echo "already built"
+exit 0
